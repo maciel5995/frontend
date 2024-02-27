@@ -1,0 +1,21 @@
+h2 {
+    color: chartreuse;
+}
+
+.minha-classe-1 {
+    color: rgb(79, 7, 147);
+}
+
+.minha-classe-2 {
+    color: goldenrod;
+}
+
+#meu-id-1 {
+    color: red;
+    text-align: center;
+}
+
+#meu-id-2 {
+    color: red;
+    text-align: center;
+}
