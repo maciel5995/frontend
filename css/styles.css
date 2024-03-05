@@ -19,3 +19,21 @@ h2 {
     color: red;
     text-align: center;
 }
+
+.background-image {
+    background-image: url("/assets/mustang.jpg");
+    width: 600px;
+    height: 600px;
+    color: white;
+    /* padding-left: 20px;
+    padding-top: 20px;
+    padding-right: 20px; */    
+    padding: 20px 20px 0px 20px; /* shorthand properties */
+    text-align: justify;
+    font-size: 20px;
+    letter-spacing: 2px;
+    background-position: center;
+    background-size: cover;
+    font-style: italic;
+    /* opacity: 0.75; */
+}
