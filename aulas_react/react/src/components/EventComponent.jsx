@@ -1,4 +1,6 @@
-export default function EventComponent() {
+import React from 'react'
+
+function EventComponent() {
     let count = 0;
     const countEvent = () => {
         console.log(count += 1);
@@ -10,3 +12,5 @@ export default function EventComponent() {
         </div>
     )
 }
+
+export default EventComponent

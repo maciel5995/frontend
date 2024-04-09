@@ -1,6 +1,11 @@
+import React from 'react'
 
-export default function ChildComponent() {
+function ChildComponent() {
     return (
-        <p>Eu sou o componente filho</p>
+        <div>
+            <p>Eu sou o componente filho...</p>
+        </div>
     )
 }
+
+export default ChildComponent
