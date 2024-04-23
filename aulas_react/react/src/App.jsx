@@ -7,6 +7,7 @@ import ConditionalComponent2 from './components/ConditionalComponent2'
 import ProductComponent from './components/ProductComponent'
 import PostComponent from './components/PostComponent'
 import GenericComponent from './components/GenericComponent'
+import MyButtonComponent from './components/MyButtonComponent'
 
 function App() {
   let component;
@@ -87,13 +88,15 @@ function App() {
         </ol>
       </GenericComponent>
       <GenericComponent>
-        <p>Eu sou o conteúdo passado pela segunda chamada</p>
+        <p style={false ? {color: 'green'} : {color: 'black'} }>Eu sou o conteúdo passado pela segunda chamada</p>
         <ul>
           <li>Item 1</li>
           <li>Item 2</li>
           <li>Item 3</li>
         </ul>
       </GenericComponent>
+      <hr />
+      <MyButtonComponent />
     </>
   )
 }
