@@ -8,6 +8,7 @@ import ProductComponent from './components/ProductComponent'
 import PostComponent from './components/PostComponent'
 import GenericComponent from './components/GenericComponent'
 import MyButtonComponent from './components/MyButtonComponent'
+import ProductTable from './components/ProductTable'
 
 function App() {
   let component;
@@ -32,6 +33,16 @@ function App() {
     {id: 2, title: 'Post 2', description: 'Descrição do Post 2'},
     {id: 3, title: 'Post 3', description: 'Descrição' }
   ]
+
+  const productsList = [
+    {id: 1, name: 'Maçã', price: 10.0, stock: 20.5 },
+    {id: 2, name: 'Banana', price: 8.0, stock:40.7 },
+    {id: 3, name: 'Melancia', price: 7.0, stock: 100.0 },
+    {id: 4, name: 'Melão', price: 9.0, stock: 30 },
+    {id: 5, name: 'Uva', price: 11.0, stock: 50 }
+  ]
+
+
   return (
     <>
       <h2>Componente principal</h2>
@@ -97,6 +108,10 @@ function App() {
       </GenericComponent>
       <hr />
       <MyButtonComponent />
+
+      <div>
+      <ProductTable products={productsList} />
+      </div>
     </>
   )
 }
