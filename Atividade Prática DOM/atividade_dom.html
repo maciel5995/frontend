@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 07</title>
+    <script src="./script.js"></script>
+    <style>
+        button {
+            width: 50px;
+            height: 25px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        body {
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div style="display: flex; align-items: center; border: 1px solid black; padding: 20px; border-radius: 5px;">
+        <button onclick="diminuirContador()">-</button>
+        <p style="margin: 20px;">Contador: <span id="contador" style="font-size: larger;">0</span></p>
+        <button onclick="aumentarContador()">+</button>
+    </div>
+</body>
+</html>

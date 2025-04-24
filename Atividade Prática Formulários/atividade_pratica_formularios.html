@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Dados Pessoais</legend>
+            <label>Nome: <input type="text" name="nome" required placeholder="Digite seu nome"></label><br>
+            <label>E-mail: <input type="email" name="email" required placeholder="exemplo@email.com"></label><br>
+            <label>Idade: <input type="number" name="idade" value="18"></label><br>
+            <label>Data de nascimento: <input type="date" name="nascimento" required></label><br>
+            <label>Senha: <input type="password" name="senha" required></label><br>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Outras Informações</legend>
+            <label>Gênero:</label>
+            <input type="radio" name="genero" value="masculino"> Masculino 
+            <input type="radio" name="genero" value="feminino"> Feminino
+            <input type="radio" name="genero" value="outro"> Outro
+            <br>
+            <label>Interesses:</label>
+            <input type="checkbox" name="interesse" value="tecnologia"> Tecnologia
+            <input type="checkbox" name="interesse" value="esportes"> Esportes
+            <input type="checkbox" name="interesse" value="musica"> Música
+            <input type="checkbox" name="interesse" value="livros"> Livros
+            <br>
+            <label>Foto de perfil: <input type="file" name="foto"></label><br>
+            <label>País:
+                <select name="pais">
+                    <option value="br">Brasil</option>
+                    <option value="us">Estados Unidos</option>
+                    <option value="fr">França</option>
+                </select>
+            </label>
+            <br>
+            <label>Profissão:
+                <input type="text" list="profissoes">
+                <datalist id="profissoes">
+                    <option value="Engenheiro">
+                    <option value="Médico">
+                    <option value="Professor">
+                    <option value="Desenvolvedor">
+                </datalist>
+            </label>
+            <br>
+            <label>Observação:</label>
+            <textarea name="observacao" rows="4"></textarea>
+            <br>
+            <label>Campo Desativado: <input type="text" value="Não editável" disabled></label>
+            <br>
+        </fieldset>
+        
+        <button type="submit">Enviar</button>
+        <button type="reset">Limpar</button>
+    </form>
+</body>
+</html>

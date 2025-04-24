@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 07</title>
+</head>
+<body>
+    <h1>Eventos</h1>
+    <button id="button">Clique aqui!</button>
+    <h3 id="mouse">Duplo click</h3>
+    <h2 id="title">Argumento do evento: clique em mim!</h2>
+    <a href="https://unisatc.com.br/">Acessar o site</a>
+    <h4>Evento de focus/blur</h4>
+    <input type="text" id="input" placeholder="clique dentro do input" />
+
+    <script>
+        const btn = document.querySelector('#button');
+
+        btn.addEventListener("mouseenter", function () {
+            // btn.style.backgroundColor = "red";
+            console.log("Mouse sobre o botão");
+        });
+
+        btn.addEventListener("mouseleave", function () {
+            // btn.style.backgroundColor = "blue";
+            console.log("Mouse saiu o botão");
+        });
+
+        btn.addEventListener("click", function () {
+            console.log("Clicou aqui!");
+        });
+
+        const mouse = document.querySelector("#mouse");
+            mouse.addEventListener("dblclick", () => {
+            console.log("Clique duplo");
+        });
+
+        mouse.addEventListener("mousedown", () => {
+            console.log("Pressionou botão");
+        });
+
+        mouse.addEventListener("mouseup", () => {
+            console.log("Soltou botão");
+        });
+
+        const title = document.querySelector("#title");
+            title.addEventListener("click", (e) => {
+            console.log(e);
+        });
+
+        document.addEventListener("mousemove", (e) => {
+            // console.log(`Eixo X: ${e.x}`);
+            // console.log(`Eixo Y: ${e.y}`);
+        });
+
+        document.addEventListener("keydown", (e) => {
+            console.log(`Pressionou ${e.key}`);
+        });
+        
+        document.addEventListener("keyup", (e) => {
+            console.log(`Soltou ${e.key}`);
+        });
+
+        const a = document.querySelector("a");
+        a.addEventListener("click", (e) => {
+            e.preventDefault();
+            console.log("Desabilitou ação do link");
+        });
+
+        const input = document.querySelector("#input");
+        input.addEventListener("focus", (e) => {
+            console.log("Efeito de focus!");
+        });
+        
+        input.addEventListener("blur", (e) => {
+            console.log("Efeito de blur!");
+        });
+    </script>
+</body>
+</html>
