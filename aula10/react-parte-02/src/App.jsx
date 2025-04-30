@@ -39,6 +39,10 @@ function App() {
 
   return (
     <>
+    <h1 className='main-title'> Titulo do Componente Principal</h1>
+    <h1 className={false ? 'main-title' : 'title'}> Titulo do Componente Principal</h1>
+    
+
     {component}
      
      <div>      
@@ -82,11 +86,11 @@ function App() {
 
      <div>
      <GenericComponent>
-        <p>Eu sou o primeiro conteúdo fornecido pelo componente pai</p>
+        <p style={{color: 'green', textAlign: 'center'}}>Eu sou o primeiro conteúdo fornecido pelo componente pai</p>
         <hr />
      </GenericComponent>
      <GenericComponent>
-        <p>Eu sou o segundo conteúdo fornecido pelo componente pai</p>
+        <p style={true ? {color: 'green'} : {color: 'red'}}>Eu sou o segundo conteúdo fornecido pelo componente pai</p>
         <ul>
           <li>Item 01</li>
           <li>Item 02</li>
