@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pêndulo Invertido sobre Carrinho</title>
+  <style>
+    body {
+      background: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+    }
+    canvas {
+      background: #eee;
+      display: block;
+      margin: 0 auto;
+      border: 2px solid #444;
+    }
+  </style>
+</head>
+<body>
+  <h1>Simulação: Pêndulo Invertido sobre Carrinho</h1>
+  <canvas id="canvas" width="800" height="400"></canvas>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    // Variáveis do sistema
+    let x = 400;               // posição horizontal do carrinho
+    let xVel = 0;              // velocidade do carrinho
+    // let theta = Math.PI;       // ângulo do pêndulo (invertido: PI rad)
+    let theta = 0;       // ângulo do pêndulo (invertido: PI rad)
+    let thetaVel = 0;          // velocidade angular do pêndulo
+
+    const dt = 0.02;           // intervalo de tempo
+    const g = 9.81;            // gravidade
+    const l = 100;             // comprimento do pêndulo (em pixels)
+    const m = 1.0;             // massa do pêndulo
+    const M = 5.0;             // massa do carrinho
+
+    // Simples controlador (proporcional derivativo)
+    function control(theta, thetaVel) {
+      const Kp = 100;
+      const Kd = 20;
+      return Kp * (Math.PI - theta) - Kd * thetaVel;
+    }
+
+    function update() {
+      const F = control(theta, thetaVel); // força de controle
+
+      const sin = Math.sin(theta);
+      const cos = Math.cos(theta);
+
+      // Equações do movimento (linearizadas/simplificadas)
+      const totalMass = m + M;
+      const temp = (F + m * l * thetaVel * thetaVel * sin) / totalMass;
+      const thetaAcc = (g * sin - cos * temp) / (l * (4/3 - m * cos * cos / totalMass));
+      const xAcc = temp - m * l * thetaAcc * cos / totalMass;
+
+      // Atualiza velocidades e posições
+      x += xVel * dt;
+      xVel += xAcc * dt;
+
+      theta += thetaVel * dt;
+      thetaVel += thetaAcc * dt;
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Desenha chão
+      ctx.fillStyle = '#444';
+      ctx.fillRect(0, 300, canvas.width, 5);
+
+      // Desenha carrinho
+      ctx.fillStyle = '#2c3e50';
+      ctx.fillRect(x - 40, 260, 80, 40);
+
+      // Desenha rodas
+      ctx.beginPath();
+      ctx.arc(x - 25, 305, 10, 0, Math.PI * 2);
+      ctx.arc(x + 25, 305, 10, 0, Math.PI * 2);
+      ctx.fillStyle = '#000';
+      ctx.fill();
+
+      // Calcula posição da ponta do pêndulo
+      const px = x + l * Math.sin(theta);
+      const py = 260 - l * Math.cos(theta);
+
+      // Desenha pêndulo
+      ctx.beginPath();
+      ctx.moveTo(x, 260);
+      ctx.lineTo(px, py);
+      ctx.strokeStyle = '#e74c3c';
+      ctx.lineWidth = 4;
+      ctx.stroke();
+
+      // Pêndulo como círculo
+      ctx.beginPath();
+      ctx.arc(px, py, 8, 0, Math.PI * 2);
+      ctx.fillStyle = '#e74c3c';
+      ctx.fill();
+    }
+
+    function loop() {
+      update();
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    loop();
+  </script>
+</body>
+</html>

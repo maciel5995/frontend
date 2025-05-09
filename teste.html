@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste</title>
+</head>
+<body>
+
+    <h2>Digite seu código JavaScript:</h2>
+    <textarea id="codigo" rows="10" cols="50"></textarea><br>
+    <button onclick="executarCodigo()">Executar</button>
+    <h3>Resultado:</h3>
+    <!-- <pre id="saida"></pre> -->
+
+    <h4 id="valor"></h4>
+
+    <div style="width: 100px; height: 200px; border: 1px solid black; display: flex; align-items: end; justify-content: center;">
+        <div style="width: 100px; height: 10vh; text-align: center; border: 1px solid blue; background-color: blue;" id="elevator"></div>
+    </div>
+  
+    <script>
+      function executarCodigo() {
+        const codigo = document.getElementById("codigo").value;
+        const saida = document.getElementById("saida");
+        try {
+          const resultado = eval(codigo); // Perigoso: executa qualquer código
+        //   saida.textContent = resultado !== undefined ? resultado : "Código executado.";
+        } catch (erro) {
+        //   saida.textContent = "Erro: " + erro.message;
+        }
+      }
+    //   let cont = 0
+    //   function updateValue(){
+    //     let value = document.getElementById("valor");
+    //     value.textContent = cont++
+    //   }
+
+    //   setInterval(updateValue, 1000)
+    let cont = 0;
+    function moveElevator(){
+        const elevator = document.getElementById("elevator")
+        elevator.style.marginBottom = `${cont++}px` 
+        // console.log(cont) 
+        if(cont > 159) clearInterval(interval) 
+    }
+
+    const interval = setInterval(moveElevator, 10)
+
+      
+    
+    </script>
+    
+</body>
+</html>
